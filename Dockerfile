@@ -4,7 +4,11 @@ FROM alpine:3.8 AS builder
 ARG UPX_VERSION=master
 
 # Install build deps
-RUN apk add --no-cache build-base ucl-dev zlib-dev git
+RUN apk add --no-cache \
+    build-base \
+    ucl-dev \
+    zlib-dev \
+    git
 
 # Clone specific branch or tag based of build-arg, --recursive since upx uses a submodule
 RUN git clone --depth 1 --recursive --branch "${UPX_VERSION}" https://github.com/upx/upx.git /upx
