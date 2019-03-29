@@ -13,8 +13,8 @@ services:
 
 matrix:
   include:
-    - env: UPX_VERSION=3.94 TAGS="3.94"
-    - env: UPX_VERSION=3.95 TAGS="3.95 latest"
+    - env: UPX_VERSION=v3.94 TAGS="3.94"
+    - env: UPX_VERSION=v3.95 TAGS="3.95 latest"
     - env: UPX_VERSION=master TAGS="master"
 
 before_script:

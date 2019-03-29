@@ -1,6 +1,9 @@
 # Inspired by: https://github.com/0xdevalias/docker-upx/blob/master/Dockerfile
 FROM alpine:3.9 AS builder
 
+LABEL maintainer="Wilmar den Ouden" \
+    description="Eclipse Mosquitto MQTT Broker, the right way"
+
 ARG UPX_VERSION=master
 
 # Install build deps
