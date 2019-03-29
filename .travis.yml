@@ -22,11 +22,11 @@ before_script:
   - docker pull ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:latest || true
 
 script:
-  - for tag in ${TAGS}
+  - for tag in ${TAGS};
     do
-      TAG_STRING+="${TAG_STRING} -t ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:${tag}"
-    done
-  - docker build .
+      TAG_STRING+="${TAG_STRING} -t ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:${tag}";
+    done;
+    docker build .
       --build-arg UPX_VERSION=${UPX_VERSION}
       --cache-from ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:latest
       ${TAG_STRING}
