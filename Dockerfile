@@ -2,7 +2,7 @@
 FROM alpine:3.8 AS builder
 
 LABEL maintainer="Wilmar den Ouden" \
-    description="Eclipse Mosquitto MQTT Broker, the right way"
+    description="UPX UPX'ed in a convenient container"
 
 ARG UPX_VERSION=master
 
