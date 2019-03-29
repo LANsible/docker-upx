@@ -1,0 +1,48 @@
+---
+dist: xenial
+language: minimal
+
+env:
+  global:
+    - fast_finish: true
+    - DOCKER_NAMESPACE=lansible
+    - CONTAINER_NAME=upx
+
+services:
+  - docker
+
+matrix:
+  include:
+    - env: UPX_VERSION=3.94 TAGS="3.94"
+    - env: UPX_VERSION=3.95 TAGS="3.95 latest"
+    - env: UPX_VERSION=master TAGS="master"
+
+before_script:
+  # Pipe to true since the tag could be non existing
+  - docker pull ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:latest || true
+
+script:
+  - |
+    for tag in ${TAGS}
+    do
+      TAG_STRING+="${TAG_STRING} -t ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:${tag}"
+    done
+    docker build .
+      --build-arg UPX_VERSION=${UPX_VERSION}
+      --cache-from ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:latest
+      ${TAG_STRING}
+
+#TODO: Write a test stage
+
+deploy:
+  provider: script
+  script: deploy/deploy.sh
+  on:
+    tags: true
+    all_branches: true
+  skip_cleanup: true
+
+notifications:
+  email:
+    on_failure: change
+    on_success: never

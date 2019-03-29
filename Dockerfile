@@ -1,5 +1,5 @@
 # Inspired by: https://github.com/0xdevalias/docker-upx/blob/master/Dockerfile
-FROM alpine:3.8 AS builder
+FROM alpine:3.9 AS builder
 
 ARG UPX_VERSION=master
 
