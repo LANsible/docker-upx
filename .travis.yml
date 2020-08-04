@@ -25,7 +25,7 @@ script:
   # Build and push builder for faster image builds
   # https://github.com/moby/moby/issues/3471
   - docker build .
-      --build-arg UPX_VERSION=${UPX_VERSION}
+      --build-arg VERSION=${UPX_VERSION}
       --target builder
       --tag ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:builder
 
@@ -35,7 +35,7 @@ script:
       TAG_STRING+="${TAG_STRING} -t ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:${tag}";
     done;
     docker build .
-      --build-arg UPX_VERSION=${UPX_VERSION}
+      --build-arg VERSION=${UPX_VERSION}
       --cache-from ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:builder
       --cache-from ${DOCKER_NAMESPACE}/${CONTAINER_NAME}:latest
       ${TAG_STRING}

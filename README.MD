@@ -34,5 +34,5 @@ For more information about UPX see [upx/upx](https://github.com/upx/upx) and the
 
 The image accepts a build-arg that sets the UPX version to build. This arg gets passed to `git clone --branch <arg>`, so everything --branch supports will work (branches & tags)
 ```bash
-docker build . -t upx:devel --build-arg UPX_VERSION=devel
+docker build . -t upx:devel --build-arg VERSION=devel
 ```
