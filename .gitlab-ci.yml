@@ -20,4 +20,4 @@ test:
   tags:
     - docker
   script:
-    - docker run ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:${CI_COMMIT_SHA}
+    - docker run ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:${CI_COMMIT_SHA}-arm64
