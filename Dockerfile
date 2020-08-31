@@ -28,7 +28,8 @@ RUN CORES=$(grep -c '^processor' /proc/cpuinfo); \
     make upx.out CHECK_WHITESPACE=
 
 # Self minify upx
-RUN ./upx.out --ultra-brute --overlay=strip -o /usr/bin/upx /upx/src/upx.out
+RUN ./upx.out --best -o /usr/bin/upx /upx/src/upx.out && \
+    upx -t /usr/bin/upx
 
 # Final image
 FROM scratch
