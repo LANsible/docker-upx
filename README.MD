@@ -1,6 +1,11 @@
 # docker-upx
+[![pipeline status](https://gitlab.com/lansible1/docker-upx/badges/master/pipeline.svg)](https://gitlab.com/lansible1/docker-upx/-/commits/master)
+[![Docker Pulls](https://img.shields.io/docker/pulls/lansible/upx.svg)](https://hub.docker.com/r/lansible/upx)
+[![Docker Version](https://images.microbadger.com/badges/version/lansible/upx:latest.svg)](https://microbadger.com/images/lansible/upx:latest)
+[![Docker Size/Layers](https://images.microbadger.com/badges/image/lansible/upx:latest.svg)](https://microbadger.com/images/lansible/upx:latest)
 
 Dockerized static UPX which allows easy copy and usage of UPX.
+Since the arm64 builds of UPX seem non existing for Alpine I needed this :)
 
 ## Usage
 
@@ -15,9 +20,8 @@ docker run --rm -v "$PWD/foo:/foo" lansible/upx --ultra-brute -o /foo/bar.upx /f
 
 Use it to minify binaries in a multistage Docker build
 ```
-FROM lansible/upx AS upx
 FROM your/baseimage
-COPY --from=upx /usr/bin/upx /usr/bin/upx
+COPY --from=lansible/upx /usr/bin/upx /usr/bin/upx
 RUN upx --ultra-brute --ultra-brute --best -o /foo/bar.upx /foo/bar
 ```
 
