@@ -24,3 +24,5 @@ test:
     DOCKER_IMAGE_TAG: ${CI_COMMIT_SHA}
   script:
     - docker run ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}-amd64
+  except:
+    - tags
