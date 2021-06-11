@@ -1,5 +1,5 @@
 ARG ARCHITECTURE
-FROM multiarch/alpine:${ARCHITECTURE}-v3.12 as builder
+FROM multiarch/alpine:${ARCHITECTURE}-v3.13 as builder
 
 LABEL maintainer="Wilmar den Ouden" \
     description="UPX UPX'ed in a convenient container"
