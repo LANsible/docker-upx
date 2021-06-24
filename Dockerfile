@@ -1,10 +1,10 @@
-ARG ARCHITECTURE
-FROM multiarch/alpine:${ARCHITECTURE}-v3.13 as builder
+FROM alpine:3.14 as builder
 
-LABEL maintainer="Wilmar den Ouden" \
-    description="UPX UPX'ed in a convenient container"
+LABEL org.opencontainers.image.description="UPX UPX'ed in a convenient container"
 
-ARG VERSION=v3.96
+# Need devel until this is tagged
+# https://github.com/upx/upx/issues/441
+ARG VERSION=devel
 
 # Install build deps
 RUN apk add --no-cache \
@@ -18,11 +18,13 @@ RUN apk add --no-cache \
 RUN git clone --depth 1 --recursive --branch "${VERSION}" https://github.com/upx/upx.git /upx
 
 WORKDIR /upx/src
-# Compile static, CHECK_WHITESPACE is needed, throws bash not found otherwise
+# CHECK_WHITESPACE is needed, throws bash not found otherwise
 RUN CORES=$(grep -c '^processor' /proc/cpuinfo); \
     export MAKEFLAGS="-j$((CORES+1)) -l${CORES}"; \
-    export LDFLAGS=-static; \
-    make upx.out CHECK_WHITESPACE=
+    make \
+        LDFLAGS=-static \
+        CHECK_WHITESPACE= \
+        upx.out
 
 # Self minify upx
 RUN ./upx.out --best -o /usr/bin/upx /upx/src/upx.out && \
