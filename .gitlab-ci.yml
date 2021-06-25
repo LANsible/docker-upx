@@ -14,8 +14,8 @@ test:
     - docker
   variables:
     DOCKER_IMAGE_NAME: ${CI_REGISTRY_IMAGE}
-    DOCKER_IMAGE_TAG: ${CI_COMMIT_SHA}
+    DOCKER_IMAGE_TAG: ${CI_COMMIT_SHA}-amd64
   script:
-    - docker run ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}-amd64
+    - docker run ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
   except:
     - tags
