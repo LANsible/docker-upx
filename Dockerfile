@@ -1,6 +1,6 @@
-FROM alpine:3.14 as builder
+FROM alpine:3.16 as builder
 
-LABEL org.opencontainers.image.description="UPX UPX'ed in a convenient container"
+LABEL org.label-schema.description="UPX UPX'ed in a convenient container"
 
 # Need devel until this is tagged
 # https://github.com/upx/upx/issues/441
