@@ -1,8 +1,8 @@
 # docker-upx
-[![pipeline status](https://gitlab.com/lansible1/docker-upx/badges/master/pipeline.svg)](https://gitlab.com/lansible1/docker-upx/-/commits/master)
+[![Build Status](https://github.com/LANsible/docker-upx/actions/workflows/docker.yml/badge.svg)](https://github.com/LANsible/docker-upx/actions/workflows/docker.yml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/lansible/upx.svg)](https://hub.docker.com/r/lansible/upx)
-[![Docker Version](https://images.microbadger.com/badges/version/lansible/upx:latest.svg)](https://microbadger.com/images/lansible/upx:latest)
-[![Docker Size/Layers](https://images.microbadger.com/badges/image/lansible/upx:latest.svg)](https://microbadger.com/images/lansible/upx:latest)
+[![Docker Version](https://img.shields.io/docker/v/lansible/upx.svg?sort=semver)](https://hub.docker.com/r/lansible/upx)
+[![Docker Size/Layers](https://img.shields.io/docker/image-size/lansible/upx.svg?sort=semver)](https://hub.docker.com/r/lansible/upx)
 
 Dockerized static UPX which allows easy copy and usage of UPX.
 Since the arm64 builds of UPX seem non existing for Alpine I needed this :)
