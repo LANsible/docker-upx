@@ -1,8 +1,8 @@
-FROM alpine:3.16 as builder
+FROM alpine:3.17 as builder
 
 LABEL org.label-schema.description="UPX UPX'ed in a convenient container"
 
-ARG VERSION=v4.0.0
+ARG VERSION=v4.0.1
 
 # Install build deps
 RUN apk add --no-cache \
