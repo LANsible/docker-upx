@@ -18,9 +18,12 @@ RUN apk add --no-cache \
 RUN git clone --depth 1 --recursive --branch "${VERSION}" https://github.com/upx/upx.git /upx
 
 WORKDIR /upx
-# CHECK_WHITESPACE is needed, throws bash not found otherwise
+# remove the git directory to avoid parsing the git tag (v4.0.1) and using that as the version
+# must use the version in the src/version.h without the v prefix
+# for example pyinstaller parses this and it breaks with the prefix
 RUN CORES=$(grep -c '^processor' /proc/cpuinfo); \
     export MAKEFLAGS="-j$((CORES+1)) -l${CORES}"; \
+    rm -rf .git && \
     make \
       CFLAGS="-O3 -static" \
       LDFLAGS="-static"
