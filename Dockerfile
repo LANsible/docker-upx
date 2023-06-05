@@ -3,7 +3,7 @@ FROM alpine:3.18 as builder
 LABEL org.label-schema.description="UPX UPX'ed in a convenient container"
 
 # https://github.com/upx/upx/releases
-ENV VERSION=v4.0.1
+ENV VERSION=v4.0.2
 
 # Install build deps
 RUN apk add --no-cache \
